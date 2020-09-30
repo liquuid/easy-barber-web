@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled , { keyframes } from 'styled-components';
 import signUpBG from '../../assets/sign-up-bg.png';
 import {shade} from 'polished';
 
@@ -8,13 +8,24 @@ export const Container = styled.div`
     align-items: stretch;
 `;
 
-export const Content = styled.div`
+const appearFromLeft = keyframes`
+    from {
+        opacity:0;
+        transform: translateX(-50px);
+
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+`;
+
+export const AnimationContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    place-content: center;
-    width: 100%;
-    max-width: 700px;
+    justify-content: center;
+    animation: ${appearFromLeft} 1s;
     form {
         margin: 80px 0;
         width: 340px;
@@ -52,6 +63,14 @@ export const Content = styled.div`
             margin-right: 16px;
         }
     }
+`;
+
+export const Content = styled.div`
+
+    place-content: center;
+    width: 100%;
+    max-width: 700px;
+
 `;
 
 export const Background = styled.div`
